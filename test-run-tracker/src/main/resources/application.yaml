@@ -1,3 +1,18 @@
 spring:
   application:
     name: test-run-tracker
+  datasource:
+    url: jdbc:postgresql://localhost:5432/tracker
+    username: tracker
+    password: ${DB_PASSWORD:tracker}   # env var DB_PASSWORD, default "tracker"
+    jpa:
+      open-in-view: false                # avoids lazy-loading surprises in controllers
+      hibernate:
+        ddl-auto: validate               # Hibernate checks the schema, Flyway creates it
+      properties:
+        hibernate:
+          jdbc:
+            time_zone: UTC
+    flyway:
+      enabled: true
+      locations: classpath:db/migration
