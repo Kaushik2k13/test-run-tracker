@@ -15,6 +15,22 @@ import java.time.Instant;
 @Entity
 public class TestRun {
 
+    public Suite getSuite() {
+        return suite;
+    }
+
+    public void setSuite(Suite suite) {
+        this.suite = suite;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
